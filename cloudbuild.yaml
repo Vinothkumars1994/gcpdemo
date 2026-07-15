@@ -8,8 +8,7 @@ steps:
     - |
       pip install -r requirements.txt
       pytest
-  options:
-  logging: CLOUD_LOGGING_ONLY
+
 
 # Build Docker image
 - name: 'gcr.io/cloud-builders/docker'
@@ -39,3 +38,6 @@ steps:
 
 images:
 - 'asia-south1-docker.pkg.dev/$PROJECT_ID/cloud-run-repo/my-app:$SHORT_SHA'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
