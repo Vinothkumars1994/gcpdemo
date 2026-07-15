@@ -8,6 +8,8 @@ steps:
     - |
       pip install -r requirements.txt
       pytest
+  options:
+  logging: CLOUD_LOGGING_ONLY
 
 # Build Docker image
 - name: 'gcr.io/cloud-builders/docker'
