@@ -15,14 +15,14 @@ steps:
   args:
     - build
     - '-t'
-    - 'asia-south1-docker.pkg.dev/$PROJECT_ID/cloud-run-repo/my-app:$SHORT_SHA'
+    - 'asia-south1-docker.pkg.dev/$PROJECT_ID/cloud-run-repocicd/my-app:$SHORT_SHA'
     - '.'
 
 # Push image
 - name: 'gcr.io/cloud-builders/docker'
   args:
     - push
-    - 'asia-south1-docker.pkg.dev/$PROJECT_ID/cloud-run-repo/my-app:$SHORT_SHA'
+    - 'asia-south1-docker.pkg.dev/$PROJECT_ID/cloud-run-repocicd/my-app:$SHORT_SHA'
 
 # Deploy to Cloud Run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -31,13 +31,13 @@ steps:
     - run
     - deploy
     - my-scalable-app
-    - --image=asia-south1-docker.pkg.dev/$PROJECT_ID/cloud-run-repo/my-app:$SHORT_SHA
+    - --image=asia-south1-docker.pkg.dev/$PROJECT_ID/cloud-run-repocicd/my-app:$SHORT_SHA
     - --region=asia-south1
     - --platform=managed
     - --allow-unauthenticated
 
 images:
-- 'asia-south1-docker.pkg.dev/$PROJECT_ID/cloud-run-repo/my-app:$SHORT_SHA'
+- 'asia-south1-docker.pkg.dev/$PROJECT_ID/cloud-run-repocicd/my-app:$SHORT_SHA'
 
 options:
   logging: CLOUD_LOGGING_ONLY
